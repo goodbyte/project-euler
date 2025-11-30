@@ -1,19 +1,20 @@
-let result = 0;
+let largestPalindrome = 0;
 
-for (let i = 999; i > 99; i--) {
-  for (let n = 999; n > 99; n--) {
-    const num = (i * n).toString();
-    const cut = Math.floor(num.length / 2);
-    const firstPart = num.slice(0, cut);
-    const lastPart = num.slice(cut).split('').reverse().join('');
+const isPalindrome = (num) => {
+  const str = num.toString();
+  return str === str.split('').reverse().join('');
+};
 
-    if (
-      firstPart === lastPart &&
-      +num > +result
-    ) {
-      result = num;
+for (let i = 999; i >= 100; i--) {
+  for (let j = 999; j >= 100; j--) {
+    const product = i * j;
+    
+    if (product <= largestPalindrome) break;
+    
+    if (isPalindrome(product)) {
+      largestPalindrome = product;
     }
   }
 }
 
-console.log(`Biggest palindrome: ${result}`);
+console.log(largestPalindrome); // 906609

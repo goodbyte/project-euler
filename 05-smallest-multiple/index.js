@@ -1,15 +1,15 @@
-let run = true;
-let n = 20;
-
-while (run) {
-  let count = 0;
-
-  for (let i = 1; i <= 20; i++) {
-    if (n % i === 0) count++;
-  }
-
-  if (count === 20) run = false;
-  else n += 20;
+function gcd(a, b) {
+  return b === 0 ? a : gcd(b, a % b);
 }
 
-console.log(n);
+function lcm(a, b) {
+  return (a * b) / gcd(a, b);
+}
+
+let result = 1;
+
+for (let i = 1; i <= 20; i++) {
+  result = lcm(result, i);
+}
+
+console.log(result); // 232792560

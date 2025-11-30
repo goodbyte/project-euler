@@ -1,16 +1,11 @@
-const primes = [];
-let n = 600851475143;
-let i = 2;
-
-while (n !== 1) {
-  if (n % i === 0) {
-    n /= i;
-    primes.push(i);
+function largestPrimeFactor(n) {
+  let max = -1;
+  while (n % 2 === 0) { max = 2; n /= 2; }
+  for (let i = 3; i * i <= n; i += 2) {
+    while (n % i === 0) { max = i; n /= i; }
   }
-
-  i === 2 ? 
-    i += 1 :
-    i += 2;
+  if (n > 1) max = n;
+  return max;
 }
 
-console.log(`Max prime: ${Math.max(...primes)}`);
+console.log(largestPrimeFactor(600851475143)); // 6857

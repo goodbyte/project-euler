@@ -1,10 +1,11 @@
-let sum = 0;
-let last = [1, 1];
-let term = 0;
+const LIMIT = 4_000_000;
+let e = [2, 8];
+let sum = e[0] + e[1];
+let cur = 0;
 
-while ((term = last[0] + last[1]) < 4e6) {
-  if (term % 2 === 0) sum += term;
-  last = [last[1], term];
+while ((cur = 4 * e[1] + e[0]) <= LIMIT) {
+  sum += cur;
+  e = [e[1], cur];
 }
 
-console.log(sum);
+console.log(sum); // 4613732

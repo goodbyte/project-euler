@@ -1,9 +1,8 @@
-let sumSquares = 0;
-let squareSum = 0;
-
-for (let i = 1; i <= 100; i++) {
-  sumSquares += i ** 2;
-  squareSum += i;
+function sumSquareDifference(n) {
+  const sum = n * (n + 1) / 2;
+  const squareOfSum = sum * sum;
+  const sumSquares = n * (n + 1) * (2 * n + 1) / 6;
+  return squareOfSum - sumSquares;
 }
 
-console.log((squareSum ** 2) - sumSquares);
+console.log(sumSquareDifference(100));

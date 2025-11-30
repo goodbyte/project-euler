@@ -1,7 +1,13 @@
-let sum = 0;
+function sumMultiples(multiples, limit = 1000) {
+  const sumFor = (n) => {
+    const k = Math.floor((limit - 1) / n);
+    return n * k * (k + 1) / 2;
+  };
 
-for (let i = 1; i < 1000; i++) {
-  if (i % 5 === 0 || i % 3 === 0) sum += i;
+  const sum = multiples.reduce((acc, m) => acc + sumFor(m), 0);
+  const exclude = sumFor(multiples.reduce((acc, m) => acc * m, 1));
+
+  return sum - (multiples.length > 1 ? exclude : 0);
 }
 
-console.log(sum);
+console.log(sumMultiples([3, 5])); // 233168
